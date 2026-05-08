@@ -1,0 +1,2 @@
+# Clothing Items Data
+# Format: ID, Name, Type, Color, Size, Material, Brand

@@ -1,0 +1,2 @@
+# Users Data
+# Format: UserID, Username, Email, PasswordHash

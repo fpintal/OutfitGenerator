@@ -1,0 +1,2 @@
+# Saved Outfits Data
+# Format: OutfitID, UserID, TopID, BottomID, ShoeID, OuterwearID

@@ -1,0 +1,17 @@
+# Ignore build files
+/build/
+/out/
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+*.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+
+# Ignore logs
+*.log
+
+# Ignore compiled files
+*.class
