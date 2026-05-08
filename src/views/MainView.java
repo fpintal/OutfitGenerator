@@ -12,13 +12,24 @@ public class MainView extends Application {
     @Override
     public void start(Stage stage) {
 
-        Label title = new Label("Outfit Generator & Virtual Dress-Up System");
+        Label title = new Label("Outfit Generator");
+        title.setStyle(
+                "-fx-font-size: 30px;" +
+                "-fx-font-weight: bold;" +
+                "-fx-text-fill: #2b2b2b;"
+        );
 
-        Button uploadButton = new Button("Upload Clothing");
-        Button buildOutfitButton = new Button("Build Outfit");
-        Button wardrobeButton = new Button("View Wardrobe");
-        Button savedOutfitsButton = new Button("Saved Outfits");
-        Button exitButton = new Button("Exit");
+        Label subtitle = new Label("Virtual Dress-Up System");
+        subtitle.setStyle(
+                "-fx-font-size: 15px;" +
+                "-fx-text-fill: #666666;"
+        );
+
+        Button uploadButton = createMenuButton("Upload Clothing");
+        Button buildOutfitButton = createMenuButton("Build Outfit");
+        Button wardrobeButton = createMenuButton("View Wardrobe");
+        Button savedOutfitsButton = createMenuButton("Saved Outfits");
+        Button exitButton = createMenuButton("Exit");
 
         uploadButton.setOnAction(e -> {
             new UploadView().start(new Stage());
@@ -40,11 +51,19 @@ public class MainView extends Application {
             stage.close();
         });
 
-        VBox root = new VBox(15);
-        root.setStyle("-fx-padding: 30; -fx-alignment: center;");
+        VBox card = new VBox(18);
+        card.setStyle(
+                "-fx-padding: 40;" +
+                "-fx-alignment: center;" +
+                "-fx-background-color: white;" +
+                "-fx-border-color: #dddddd;" +
+                "-fx-border-radius: 16;" +
+                "-fx-background-radius: 16;"
+        );
 
-        root.getChildren().addAll(
+        card.getChildren().addAll(
                 title,
+                subtitle,
                 uploadButton,
                 buildOutfitButton,
                 wardrobeButton,
@@ -52,10 +71,36 @@ public class MainView extends Application {
                 exitButton
         );
 
-        Scene scene = new Scene(root, 500, 400);
+        VBox root = new VBox();
+        root.setStyle(
+                "-fx-padding: 40;" +
+                "-fx-alignment: center;" +
+                "-fx-background-color: #f4f1ed;"
+        );
 
-        stage.setTitle("Main Menu");
+        root.getChildren().add(card);
+
+        Scene scene = new Scene(root, 550, 600);
+
+        stage.setTitle("Outfit Generator");
         stage.setScene(scene);
         stage.show();
+    }
+
+    private Button createMenuButton(String text) {
+        Button button = new Button(text);
+
+        button.setPrefWidth(240);
+        button.setPrefHeight(42);
+
+        button.setStyle(
+                "-fx-font-size: 14px;" +
+                "-fx-background-color: #2b2b2b;" +
+                "-fx-text-fill: white;" +
+                "-fx-background-radius: 10;" +
+                "-fx-cursor: hand;"
+        );
+
+        return button;
     }
 }
