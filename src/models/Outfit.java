@@ -58,4 +58,8 @@ public class Outfit {
             item.displayItem();
         }
     }
+
+    public ArrayList<ClothingItem> getClothingItems() {
+    return clothingItems;
+}
 }
