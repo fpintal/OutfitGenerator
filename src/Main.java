@@ -1,11 +1,10 @@
 package src;
 
 import javafx.application.Application;
-import src.views.OutfitBuilderView;
+import src.views.MainView;
 
 public class Main {
-
     public static void main(String[] args) {
-        Application.launch(OutfitBuilderView.class, args);
+        Application.launch(MainView.class, args);
     }
 }
