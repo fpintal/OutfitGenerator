@@ -1,4 +1,8 @@
-401,Casual Fit
-  201,Bottom,Blue
-  301,Shoe,White
-  102,Top,White
+401,Saved Outfit
+101,assets/tops/tan_buttonup.png,Top,Selected
+201,assets/bottoms/pink_capris.png,Bottom,Selected
+301,assets/shoes/brown_dressshoes.png,Shoe,Selected
+OUTFIT_1778265887385,Saved Outfit
+101,assets/tops/floral_top.png,Top,Selected
+201,assets/bottoms/dark_denim_pants.png,Bottom,Selected
+301,assets/shoes/brown_dressshoes.png,Shoe,Selected
