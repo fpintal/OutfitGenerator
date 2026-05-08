@@ -1,8 +1,4 @@
-401,Saved Outfit
-101,assets/tops/tan_buttonup.png,Top,Selected
-201,assets/bottoms/pink_capris.png,Bottom,Selected
-301,assets/shoes/brown_dressshoes.png,Shoe,Selected
-OUTFIT_1778265887385,Saved Outfit
+OUTFIT_1778266617572,Saved Outfit
 101,assets/tops/floral_top.png,Top,Selected
 201,assets/bottoms/dark_denim_pants.png,Bottom,Selected
 301,assets/shoes/brown_dressshoes.png,Shoe,Selected

@@ -3,15 +3,14 @@ package src.views;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class SavedOutfitsView {
 
@@ -51,13 +50,16 @@ public class SavedOutfitsView {
     }
 
     private void loadSavedOutfitImages(VBox outfitsBox) {
+
         try {
             BufferedReader reader = new BufferedReader(
                     new FileReader("data/savedOutfits.txt")
             );
 
             String line;
+
             VBox currentOutfitBox = null;
+            ArrayList<String> currentOutfitLines = new ArrayList<>();
 
             while ((line = reader.readLine()) != null) {
 
@@ -67,8 +69,14 @@ public class SavedOutfitsView {
 
                 String[] parts = line.split(",");
 
+                // Outfit header
                 if (parts.length == 2) {
+
+                    currentOutfitLines = new ArrayList<>();
+                    currentOutfitLines.add(line);
+
                     currentOutfitBox = new VBox(8);
+
                     currentOutfitBox.setStyle(
                             "-fx-alignment: center;" +
                             "-fx-border-color: lightgray;" +
@@ -77,12 +85,33 @@ public class SavedOutfitsView {
                     );
 
                     Label outfitName = new Label("Outfit: " + parts[1]);
-                    currentOutfitBox.getChildren().add(outfitName);
+
+                    Button deleteButton = new Button("Delete Outfit");
+
+                    ArrayList<String> outfitToDelete = currentOutfitLines;
+
+                    deleteButton.setOnAction(e -> {
+                        deleteOutfit(outfitToDelete);
+
+                        Stage currentStage = (Stage) outfitsBox.getScene().getWindow();
+                        currentStage.close();
+
+                        new SavedOutfitsView().start(new Stage());
+                    });
+
+                    currentOutfitBox.getChildren().addAll(
+                            outfitName,
+                            deleteButton
+                    );
 
                     outfitsBox.getChildren().add(currentOutfitBox);
                 }
 
+                // Clothing item line
                 if (parts.length == 4 && currentOutfitBox != null) {
+
+                    currentOutfitLines.add(line);
+
                     String imagePath = parts[1];
 
                     ImageView imageView = new ImageView(
@@ -99,8 +128,48 @@ public class SavedOutfitsView {
             reader.close();
 
         } catch (IOException e) {
+
             outfitsBox.getChildren().add(
                     new Label("No saved outfits found.")
+            );
+        }
+    }
+
+    private void deleteOutfit(ArrayList<String> outfitLines) {
+
+        try {
+
+            File inputFile = new File("data/savedOutfits.txt");
+
+            BufferedReader reader = new BufferedReader(
+                    new FileReader(inputFile)
+            );
+
+            ArrayList<String> remainingLines = new ArrayList<>();
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                if (!outfitLines.contains(line)) {
+                    remainingLines.add(line);
+                }
+            }
+
+            reader.close();
+
+            FileWriter writer = new FileWriter(inputFile);
+
+            for (String remainingLine : remainingLines) {
+                writer.write(remainingLine + "\n");
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+
+            System.out.println(
+                    "Error deleting outfit: " + e.getMessage()
             );
         }
     }

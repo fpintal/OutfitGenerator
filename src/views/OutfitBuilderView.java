@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -42,6 +43,10 @@ public class OutfitBuilderView extends Application {
 
         Label title = new Label("Outfit Generator");
 
+        TextField outfitNameField = new TextField();
+        outfitNameField.setPromptText("Enter outfit name");
+        outfitNameField.setMaxWidth(250);
+
         ImageView topView = createImageView(topImages[topIndex]);
         ImageView bottomView = createImageView(bottomImages[bottomIndex]);
         ImageView shoeView = createImageView(shoeImages[shoeIndex]);
@@ -72,7 +77,14 @@ public class OutfitBuilderView extends Application {
         saveButton.setOnAction(e -> {
             String outfitID = "OUTFIT_" + System.currentTimeMillis();
 
-            Outfit outfit = new Outfit(outfitID, "Saved Outfit");
+            String outfitName = outfitNameField.getText();
+
+            if (outfitName.isEmpty()) {
+                outfitName = "Saved Outfit";
+            }
+
+            Outfit outfit = new Outfit(outfitID, outfitName);
+
             Top selectedTop = new Top(
                     "101",
                     topImages[topIndex],
@@ -103,7 +115,8 @@ public class OutfitBuilderView extends Application {
 
             saveService.saveOutfit(user, outfit);
 
-            statusLabel.setText("Outfit saved successfully!");
+            statusLabel.setText("Outfit saved: " + outfitName);
+            outfitNameField.clear();
         });
 
         backButton.setOnAction(e -> {
@@ -116,6 +129,7 @@ public class OutfitBuilderView extends Application {
 
         root.getChildren().addAll(
                 title,
+                outfitNameField,
                 topView,
                 bottomView,
                 shoeView,
@@ -127,7 +141,7 @@ public class OutfitBuilderView extends Application {
                 backButton
         );
 
-        Scene scene = new Scene(root, 500, 700);
+        Scene scene = new Scene(root, 500, 750);
 
         stage.setTitle("Outfit Builder");
         stage.setScene(scene);
@@ -136,8 +150,8 @@ public class OutfitBuilderView extends Application {
 
     private ImageView createImageView(String imagePath) {
         Image image = new Image("file:" + imagePath);
-        ImageView imageView = new ImageView(image);
 
+        ImageView imageView = new ImageView(image);
         imageView.setFitWidth(200);
         imageView.setPreserveRatio(true);
 
