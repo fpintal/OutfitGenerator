@@ -1,24 +1,25 @@
-# Outfit Generator & Virtual Dress-Up System
+# Outfit Generator & Virtual Dress-Up System (JavaFX)
 
-## Overview
-The Outfit Generator & Virtual Dress-Up System is a Java-based application designed to help users create and manage their wardrobe, build outfits, and visualize virtual dress-up combinations. The project is structured to support JavaFX for a rich graphical user interface.
+## How to Run
+1. Open the project in VS Code or your preferred Java IDE.
+2. Ensure Java JDK 21+ and JavaFX SDK are installed.
+3. Compile the project:
 
-## Project Structure
-- **src/**: Contains all Java source files organized into models, views, controllers, and services.
-- **assets/**: Stores images and icons for the application.
-- **data/**: Contains text files for storing user, wardrobe, and outfit data.
-- **diagrams/**: Placeholder for design diagrams.
-- **documentation/**: Placeholder for project documentation.
+```bash
+javac --module-path /PATH_TO_JAVAFX/lib --add-modules javafx.controls src/Main.java src/views/*.java src/models/*.java src/services/*.java
 
-## Getting Started
-1. Clone the repository.
-2. Open the project in your favorite Java IDE.
-3. Build and run the `Main` class to start the application.
-
-## Future Enhancements
-- Implement JavaFX for the user interface.
-- Add database integration for persistent storage.
-- Enhance the outfit generation algorithm.
-
-## License
-This project is licensed under the MIT License.
+# Features
+- Upload clothing images into the application.
+- Categorize clothing items:
+- Tops
+- Bottoms
+- Shoes
+- Preview uploaded clothing images.
+- Display a digital wardrobe with uploaded items.
+- Create outfits visually using clothing images.
+- Switch between tops, bottoms, and shoes.
+- Randomize outfit combinations.
+- Save custom-named outfits.
+- View saved outfits with clothing images.
+- Delete saved outfits.
+- Persistent local storage using image folders and text files.
