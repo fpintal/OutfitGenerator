@@ -25,6 +25,14 @@ public class Main {
                 "Long Sleeve"
         );
 
+        Top tshirt = new Top(
+        "102",
+        "assets/tops/tshirt.png",
+        "Top",
+        "White",
+        "Short Sleeve"
+);
+
         Bottom jeans = new Bottom(
                 "201",
                 "assets/bottoms/jeans.png",
@@ -47,8 +55,10 @@ public class Main {
 
         // Add clothing items using WardrobeService
         wardrobeService.addItemToWardrobe(user, hoodie);
+        wardrobeService.addItemToWardrobe(user, tshirt);
         wardrobeService.addItemToWardrobe(user, jeans);
         wardrobeService.addItemToWardrobe(user, sneakers);
+        
 
         // Create outfit using OutfitService
         Outfit casualFit = outfitService.createOutfit("401", "Casual Fit");
@@ -73,5 +83,16 @@ public class Main {
 
         System.out.println("\nOutfit Details:");
         outfitService.displayOutfit(casualFit);
+
+        System.out.println("\n--- Switching Top ---");
+
+        outfitService.switchItemByCategory(casualFit, tshirt);
+
+        System.out.println("\nUpdated Outfit Details:");
+        outfitService.displayOutfit(casualFit);
+
+        // Saves user's wardrobe and outfits
+        saveService.saveWardrobe(user);
+        saveService.saveOutfits(user);
     }
 }

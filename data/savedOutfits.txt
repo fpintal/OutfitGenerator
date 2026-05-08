@@ -1,2 +1,4 @@
-# Saved Outfits Data
-# Format: OutfitID, UserID, TopID, BottomID, ShoeID, OuterwearID
+401,Casual Fit
+  201,Bottom,Blue
+  301,Shoe,White
+  102,Top,White

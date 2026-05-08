@@ -62,4 +62,6 @@ public class Outfit {
     public ArrayList<ClothingItem> getClothingItems() {
     return clothingItems;
 }
+
+    
 }

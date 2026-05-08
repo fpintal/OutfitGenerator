@@ -1,2 +1,4 @@
-# Clothing Items Data
-# Format: ID, Name, Type, Color, Size, Material, Brand
+101,assets/tops/hoodie.png,Top,Black
+102,assets/tops/tshirt.png,Top,White
+201,assets/bottoms/jeans.png,Bottom,Blue
+301,assets/shoes/sneakers.png,Shoe,White
