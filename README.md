@@ -7,6 +7,10 @@
 
 ```bash
 javac --module-path /PATH_TO_JAVAFX/lib --add-modules javafx.controls src/Main.java src/views/*.java src/models/*.java src/services/*.java
+<<<<<<< HEAD
+=======
+```
+>>>>>>> 63d81df38a1495980f2fa85a45338e93820ab85b
 
 # Features
 - Upload clothing images into the application.
@@ -22,4 +26,24 @@ javac --module-path /PATH_TO_JAVAFX/lib --add-modules javafx.controls src/Main.j
 - Save custom-named outfits.
 - View saved outfits with clothing images.
 - Delete saved outfits.
+<<<<<<< HEAD
 - Persistent local storage using image folders and text files.
+=======
+- Persistent local storage using image folders and text files.
+
+## Notes
+- Clothing images are stored inside:
+  - `assets/tops`
+  - `assets/bottoms`
+  - `assets/shoes`
+
+- Saved outfits are stored in:
+  - `data/savedOutfits.txt`
+
+- Uploaded clothing updates the wardrobe and outfit builder automatically.
+
+- Supported image formats:
+  - `.png`
+  - `.jpg`
+  - `.jpeg`
+>>>>>>> 63d81df38a1495980f2fa85a45338e93820ab85b
